@@ -15,7 +15,7 @@ const Home = () => {
       <HomePosts/>
       <HomePosts/>
     </div>
-    <Footer/>
+    
     </>
   )
 }
