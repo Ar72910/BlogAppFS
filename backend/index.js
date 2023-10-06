@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 
 const authRouter = require('./routes/auth')
 const userRouter = require("./routes/users");
+const postRouter = require("./routes/posts");
 
 // database
 const connectDB = async()=>{
@@ -26,7 +27,7 @@ app.use(express.json())
 
 app.use('/api/auth',authRouter)
 app.use("/api/users", userRouter);
-
+app.use("/api/posts", postRouter);
 
 
 app.listen(process.env.PORT||3000,()=>{
