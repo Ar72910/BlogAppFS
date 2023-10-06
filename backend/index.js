@@ -28,6 +28,7 @@ app.use('/api/auth',authRouter)
 app.use("/api/users", userRouter);
 
 
+
 app.listen(process.env.PORT||3000,()=>{
     connectDB()
     console.log(`app is running on port ${process.env.PORT}` );
