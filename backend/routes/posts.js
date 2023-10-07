@@ -67,9 +67,15 @@ router.get("/:id", async (req, res) => {
 // get all Posts
 
 router.get("/", async (req, res) => {
+    const query = req.query
+
   try {
-    const posts = await Post.find();
-    res.status(200).json(posts);
+    const searchFilter = {
+        title:{$regex:query.search,$options:"i"}
+    }
+    const posts = await Post.find(query.search?searchFilter:null);
+    res.status(200).json(posts)
+    
   } catch (err) {
     res.status(500).json({
       message: "Error in getting all the posts",
@@ -91,5 +97,8 @@ router.get("/user/:userId", async (req, res) => {
     });
   }
 });
+
+// search post
+
 
 module.exports = router;
