@@ -4,9 +4,10 @@ const mongoose =  require('mongoose');
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth')
-const userRouter = require("./routes/users");
+const userRouter =   require("./routes/users");
 const postRouter = require("./routes/posts");
 const commentRouter = require('./routes/comments');
+const cors = require("cors");
 
 // database
 const connectDB = async()=>{
@@ -26,6 +27,7 @@ const connectDB = async()=>{
 dotenv.config();
 app.use(express.json());
 app.use(cookieParser())
+app.use(cors({origin:"http://localhost:5173", credentials:true}))
 
 
 app.use('/api/auth',authRouter)
