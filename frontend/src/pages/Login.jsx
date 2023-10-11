@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios  from 'axios';
 import {URL} from '../url'
+import { UserContext } from '../context/UserContext';
 
 const Login = () => {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState();
   const [error, setError] = useState(false); 
   const navigate = useNavigate();
+  const {setUser} = useContext(UserContext);
 
 
   const handleLogin  = async()=>{
     try{
-      const res = await axios.post(URL +'/api/auth/login',{email,password});
-      console.log('Login successfull');
+      const res = await axios.post(URL +'/api/auth/login',{email,password},{withCredentials:true});
+      setUser(res.data)
       navigate('/')
 
 
