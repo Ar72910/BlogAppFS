@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {BsSearch} from 'react-icons/bs'
 import {FaBars} from 'react-icons/fa'
 import Menu from './Menu'
@@ -7,6 +7,10 @@ import { UserContext } from '../context/UserContext'
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
+  const [prompt, setPrompt] = useState("");
+  const navigate = useNavigate()
+  console.log(prompt);
+
 
   const showMenu = ()=>{
     menu?setMenu(false):setMenu(true);
@@ -21,8 +25,8 @@ const Navbar = () => {
 
  {/* search bar*/}
     <div className='flex justify-center items-center space-x-2  '>
-      <p><BsSearch/></p>
-      <input className=' px-3 w-[200px] rounded-md' placeholder='Search a post' type ="text"></input>
+      <p  onClick = {()=>navigate(prompt?"?search="+prompt:navigate("/"))}className='cursor-pointer'><BsSearch/></p>
+      <input onChange={(e)=>setPrompt(e.target.value)} className=' px-3 w-[200px] rounded-md' placeholder='Search a post' type ="text"></input>
     </div>
 
        {/* login and register */}
