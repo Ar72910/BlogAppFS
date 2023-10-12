@@ -16,11 +16,12 @@ import axios from "axios";
     const getUser = async()=>{
         try{
             const res = await axios.get(URL+"/api/auth/refetch",{withCredentials:true})
-            console.log(res.data);
+            // console.log(res.data);
             setUser(res.data)
 
         }
         catch(err){
+            console.log("error: ", err);
 
         }
     }

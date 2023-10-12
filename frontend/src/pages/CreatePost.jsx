@@ -62,7 +62,7 @@ const CreatePost = () => {
 
                  </div>
 
-                <textarea rows={15} cols={30} className='px-4 py-2 outline-none'placeholder='Enter post description'></textarea>
+                <textarea rows={10} cols={30} className='px-4 py-2 outline-none'placeholder='Enter post description'></textarea>
                 <div className='flex'>
                 <button className=' bg-black w-full md:w-[20%] mx-auto text-white rounded-md font-semibold px-4 py-2 md:text-xl text-lg'>Create</button>
                 </div>
