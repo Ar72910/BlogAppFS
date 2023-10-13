@@ -1,10 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import {BiEdit} from 'react-icons/bi'
 import {MdDelete} from 'react-icons/md'
 import Comment from '../components/Comment'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import {URL} from '../url'
 
 const PostDetails = () => {
+
+    const postId = useParams().id;
+    console.log("post id : ",postId);
+
+    const fetchPost = async()=>{
+        try{
+            const res = await axios.get(URL+"/api/posts/"+postId);
+            console.log("res data: ",res.data);
+
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+    useEffect(()=>{
+        fetchPost();
+    },[postId])
+
+    
   return (
     <div>    
         <Navbar/>
